@@ -1,0 +1,24 @@
+version: '3.7'
+name: awesomepizza
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5173"
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:5173/up || exit 1" ]
+    working_dir: /usr/src/app
+    environment:
+      VIRTUAL_HOST: "awesomepizza.demo.localhost"
+    networks:
+      - network1
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules  # preserve container node_modules folder
+networks:
+  network1:
+    name: awesomepizza-net
+    external: true

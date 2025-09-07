@@ -1,5 +1,9 @@
 import React from 'react';
 import {NavLink} from "react-router";
+// @ts-ignore
+import logo from "../assets/logo.png";
+// @ts-ignore
+import oven from "../assets/oven.png";
 
 function Header(props: any) {
   return (
@@ -8,36 +12,56 @@ function Header(props: any) {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <div className="shrink-0">
-              <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                   alt="Your Company" className="size-8"/>
+              <img
+                src={logo}
+                alt="Your Company"
+                className="size-10 rotate-20"
+              />
             </div>
             <div className="md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <NavLink
                   to="/"
                   end
-                  className={({ isActive }) =>
+                  className={({isActive}) =>
                     isActive
-                      ? "rounded-md bg-gray-600 px-3 py-2 text-sm font-medium text-white"
+                      ? "rounded-md px-3 py-2 text-sm font-medium text-white bg-gray-600"
                       : "rounded-md px-3 py-2 text-sm font-medium text-white"
                   }
                 >
-                  Le nostre pizze
+                  Menù
                 </NavLink>
                 <NavLink
-                  to="/kitchen"
+                  to="/orders"
                   end
-                  className={({ isActive }) =>
+                  className={({isActive}) =>
                     isActive
-                      ? "rounded-md bg-gray-600 px-3 py-2 text-sm font-medium text-white"
+                      ? "rounded-md px-3 py-2 text-sm font-medium text-white bg-gray-600"
                       : "rounded-md px-3 py-2 text-sm font-medium text-white"
                   }
                 >
-                  Cucina
+                  Ordini
                 </NavLink>
               </div>
             </div>
+
           </div>
+          <NavLink
+            to="/kitchen"
+            end
+            className={({isActive}) =>
+              isActive
+                ? "flex items-center justify-center gap-4 px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-600"
+                : "flex items-center justify-center gap-4 px-3 py-2  rounded-md text-sm font-medium text-white"
+            }
+          >
+            <img
+              src={oven}
+              className="size-8"
+              alt="awesome pizza"
+            />
+            Cucina
+          </NavLink>
         </div>
       </div>
     </nav>

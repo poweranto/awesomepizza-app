@@ -12,12 +12,14 @@ export async function fetchPizzas(): Promise<Pizza[]> {
 
 export async function fetchOrders(): Promise<Order[]> {
   const response = await fetch(`${BASE_API_URL}/orders`);
+  if (!response.ok) {
+    throw new Error(`Si è verificato un errore: ${response.status}`);
+  }
   return await response.json();
-  //setOrders(result);
 }
 
 export async function saveOrder(pizzaId: number): Promise<Order> {
-  const response = await fetch(`${BASE_API_URL}/pizza/${pizzaId}`, {
+  const response = await fetch(`${BASE_API_URL}/orders/pizza/${pizzaId}`, {
     method: "POST"
   });
   if (!response.ok) {

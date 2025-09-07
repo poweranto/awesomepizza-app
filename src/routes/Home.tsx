@@ -19,13 +19,12 @@ function Home(props: any) {
         setError((error as Error).message);
       }
     }
-
     getPizzas();
   }, []);
 
   async function createOrder(pizzaId: number) {
     // we don't want to create an order while another is in process
-    if (orderSaving!==undefined) {
+    if (orderSaving !== undefined) {
       console.log("we don't want to create an order while another is in process");
       return;
     }
@@ -47,19 +46,20 @@ function Home(props: any) {
           <h1 className="text-3xl font-bold tracking-tight text-gray-900">Le nostre pizze</h1>
         </div>
       </header>
-
       <main>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-
+        <div className="mx-auto max-w-7xl">
           <div className="bg-white">
-            <div className="mx-auto max-w-2xl px-4 sm:px-2 lg:max-w-7xl lg:px-8">
-              <div className="flex justify-between mt-6 h-16">
-                <div className="flex flex-col justify-between w-54">
-                  <div className="flex justify-between">Il tuo ordine<span className="font-medium">Margherita</span>
-                  </div>
-                  <div className="border-b border-solid border-gray-300"></div>
-                  <div className="flex justify-between">Codice ordine<span className="font-medium">ASD445556</span>
-                  </div>
+            <div className="mx-auto max-w-7xl px-4 sm:px-2 lg:px-8">
+
+              <div className="flex flex-col w-fit justify-between gap-1 mt-6">
+                <div className="flex justify-between gap-2">
+                  <span className="font-extralight">Il tuo ordine</span>
+                  <span className="font-medium">{order?.pizza.name}</span>
+                </div>
+                <div className="border-b border-solid border-gray-100"></div>
+                <div className="flex justify-between gap-2">
+                  <span className="font-extralight">Codice</span>
+                  <span className="font-medium">{order?.code}</span>
                 </div>
               </div>
 

@@ -27,7 +27,7 @@ function PizzaCard({
         />
         <div className="flex flex-col justify-between">
           <h3 className="text-lg text-sky-700">{title}</h3>
-          <p className="mt-1 text-sm text-gray-500">{description}</p>
+          <span className="mt-1 text-sm font-extralight italic text-gray-500">{description}</span>
         </div>
       </div>
       <button

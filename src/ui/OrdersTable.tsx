@@ -37,7 +37,14 @@ function OrdersTable({
           )
         }>
           <td className="p-4">
-            <p className="block font-sans text-sm antialiased font-normal">{order.pizza.name}</p>
+            <div className="flex gap-2 items-center">
+              <img
+                src={`/${order.pizza.name.toLowerCase()}.png`}
+                alt="pizza"
+                className="aspect-square rounded-md bg-gray-200 object-cover h-8 lg:aspect-auto"
+              />
+              <span className="block font-sans text-sm antialiased font-normal">{order.pizza.name}</span>
+            </div>
           </td>
           <td className="p-4">
             <p

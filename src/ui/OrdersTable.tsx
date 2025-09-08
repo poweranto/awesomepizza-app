@@ -28,7 +28,7 @@ function OrdersTable({
       </thead>
       <tbody>
       {orders.map(order => (
-        <tr className="border-b border-gray-200">
+        <tr key={order.id} className="border-b border-gray-200">
           <td className="p-4">
             <p className="block font-sans text-sm antialiased font-normal">{order.pizza.name}</p>
           </td>

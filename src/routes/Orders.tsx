@@ -32,9 +32,9 @@ function Orders(props: any) {
       </header>
       <main>
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="bg-white">
+          <div className="bg-white max-h-[610px] overflow-y-auto">
             <div className="mx-auto max-w-2xl lg:max-w-7xl">
-              <div className="mt-6" style={{maxHeight: "500px", overflowY: "auto"}}>
+              <div className="mt-6">
                 {error && (<span className="text-red-500">{error}</span>)}
 
                 <div className="flex flex-wrap gap-4 sm:gap-0 justify-between">

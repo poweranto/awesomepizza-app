@@ -23,11 +23,12 @@ function Home(props: any) {
   }, []);
 
   async function createOrder(pizzaId: number) {
-    // we don't want to create an order while another is in process
+    // we don't want to create an order while another is being saved
     if (orderSaving !== undefined) {
       console.log("we don't want to create an order while another is in process");
       return;
     }
+    setError(undefined);
     setOrderSaving(pizzaId);
     try {
       const result = await saveOrder(pizzaId);
@@ -50,7 +51,7 @@ function Home(props: any) {
         <div className="mx-auto max-w-7xl">
           <div className="bg-white">
             <div className="mx-auto max-w-7xl px-4 sm:px-2 lg:px-8">
-
+              {error && (<span className="text-red-500">{error}</span>)}
               <div className="flex flex-col w-fit justify-between gap-1 mt-6">
                 <div className="flex justify-between gap-2">
                   <span className="font-extralight">Il tuo ordine</span>
@@ -64,7 +65,6 @@ function Home(props: any) {
               </div>
 
               <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                {error && (<span className="text-red-500">{error}</span>)}
                 {pizzas.map(pizza => (
                   <PizzaCard
                     key={pizza.id}

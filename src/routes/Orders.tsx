@@ -1,23 +1,10 @@
-import React, {useEffect, useMemo, useState} from 'react';
-import {fetchOrders} from "../services.tsx";
-import {Order, OrderStatus} from "../types.tsx";
+import React, {useMemo} from 'react';
 import OrdersTable from "../ui/OrdersTable.tsx";
+import useOrders from "../hooks/useOrders.tsx";
 
 function Orders(props: any) {
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [error, setError] = useState<string>();
 
-  useEffect(() => {
-    async function getOrders() {
-      try {
-        const result = await fetchOrders();
-        setOrders(result ?? []);
-      } catch (error) {
-        setError((error as Error).message);
-      }
-    }
-    getOrders();
-  }, []);
+  const { orders, error } = useOrders();
 
   const inProgressOrder = useMemo(function(){
     return orders.find( order => order.status === "IN_PROGRESS");
@@ -64,7 +51,7 @@ function Orders(props: any) {
         </div>
       </main>
     </>
-);
+  );
 }
 
 export default Orders;

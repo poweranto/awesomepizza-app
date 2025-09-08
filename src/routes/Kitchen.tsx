@@ -1,14 +1,13 @@
-import React, {useEffect, useMemo, useState} from 'react';
-import {Order} from "../types.tsx";
-import {completeOrder, fetchOrders, saveOrder, takeNextOrder} from "../services.tsx";
+import React, {useMemo, useState} from 'react';
+import {completeOrder, takeNextOrder} from "../services.tsx";
 import OrdersTable from "../ui/OrdersTable.tsx";
 import Loading from "../ui/Loading.tsx";
+import useOrders from "../hooks/useOrders.tsx";
 
 function Kitchen(props: any) {
 
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [error, setError] = useState<string>();
   const [processing, setProcessing] = useState(false);
+  const { orders, error, setOrders, setError} = useOrders();
 
   const inProgressOrder = useMemo(function(){
     return orders.find( order => order.status === "IN_PROGRESS");
@@ -17,18 +16,6 @@ function Kitchen(props: any) {
   const ordersToProcessExists = useMemo(function(){
     return orders.some( order => order.status === "PENDING");
   }, [orders]);
-
-  useEffect(() => {
-    async function getOrders() {
-      try {
-        const result = await fetchOrders();
-        setOrders(result ?? []);
-      } catch (error) {
-        setError((error as Error).message);
-      }
-    }
-    getOrders();
-  }, []);
 
   async function processOrder() {
     setProcessing(true);

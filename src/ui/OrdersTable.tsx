@@ -28,7 +28,14 @@ function OrdersTable({
       </thead>
       <tbody>
       {orders.map(order => (
-        <tr key={order.id} className="border-b border-gray-200">
+        <tr key={order.id} className={order.status === "COMPLETED"
+          ? "border-b border-gray-200 bg-lime-100"
+          : (
+            order.status === "IN_PROGRESS"
+              ? "border-b border-gray-200 bg-sky-100"
+              : "border-b border-gray-200"
+          )
+        }>
           <td className="p-4">
             <p className="block font-sans text-sm antialiased font-normal">{order.pizza.name}</p>
           </td>

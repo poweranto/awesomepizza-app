@@ -67,7 +67,7 @@ function Kitchen(props: any) {
               {inProgressOrder && (
                 <button
                   type="button"
-                  className="rounded-md bg-indigo-500 px-4 py-2 text-sm leading-6 font-semibold text-white shadow"
+                  className="inline-flex justify-center rounded-md bg-gray-800 hover:cursor-pointer px-4 py-2 text-sm leading-6 font-semibold text-white shadow"
                   onClick={() => closeOrder(inProgressOrder.id)}
                   disabled={processing}
                 >
@@ -79,7 +79,7 @@ function Kitchen(props: any) {
               {ordersToProcessExists && !inProgressOrder && (
                 <button
                   type="button"
-                  className="rounded-md bg-indigo-500 px-4 py-2 text-sm leading-6 font-semibold text-white shadow"
+                  className="inline-flex justify-center rounded-md bg-gray-800 hover:cursor-pointer px-4 py-2 text-sm leading-6 font-semibold text-white shadow"
                   onClick={() => processOrder()}
                   disabled={processing}
                 >

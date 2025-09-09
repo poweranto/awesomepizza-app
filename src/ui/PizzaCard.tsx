@@ -33,7 +33,7 @@ function PizzaCard({
       </div>
       <button
         type="button"
-        className="inline-flex justify-center items-center rounded-md bg-indigo-500 px-4 py-2 text-sm leading-6 font-semibold text-white shadow"
+        className="inline-flex justify-center items-center hover:cursor-pointer rounded-md bg-gray-800 px-4 py-2 text-sm leading-6 font-semibold text-white shadow"
         disabled={loading !== undefined && loading !== id}
         onClick={() => onSelect(id)}
       >
